@@ -1,0 +1,32 @@
+CREATE TABLE Celebrities(id INTEGER PRIMARY KEY, full_name TEXT);
+INSERT INTO Celebrities VALUES (1, 'Dwayne_Johnson');
+INSERT INTO Celebrities VALUES (2, 'Charlie_Chaplin');
+INSERT INTO Celebrities VALUES (3, 'Donald_Trump');
+INSERT INTO Celebrities VALUES (4, 'Betty_White');
+INSERT INTO Celebrities VALUES (5, 'Jim_Carrey');
+INSERT INTO Celebrities VALUES (6, 'Stephen King');
+INSERT INTO Celebrities VALUES (7, 'Reba_McEntire');
+
+CREATE TABLE profession(id INTEGER PRIMARY KEY, profession TEXT, movies_starred_in INTEGER);
+INSERT INTO profession VALUES (1, "Actor", 42);
+INSERT INTO profession VALUES (2, "Actor", 81);
+INSERT INTO profession VALUES (3, "Actor/politician", 11);
+INsert INTO profession VALUES (4, "Actor", 21);
+INSERT INTO profession VALUES (5, "Actor", 44);
+INSERT INTO profession VALUES (6, "Actor/author", 23);
+INSERT INTO profession VALUES (7, "Actor/singer", 11);
+CREATE TABLE awards (id INTEGER PRIMARY KEY,  name TEXT, awards_nominations INTEGER, awards_won INTEGER);
+INSERT INTO awards VALUES (1, "Dwayne_Johnson", 17, 73);
+INSERT INTO awards VALUES (2, "Charlie Chaplin", 87, 23);
+INSERT INTO awards VALUES (3, "Donald_Trump", 0, 0);
+INSERT INTO awards VALUES (4, " Betty_White", 40, 41);
+INSert INTO awards VALUES (5, "Jim_Carrey", 100, 53);
+INSERT INTO awards VALUES (6, "Stephen_King", 280, 107);
+INSERT INTO awards VALUES (7, "Reba_McEntire", 221, 91);
+
+SELECT Celebrities.full_name, profession.profession, awards.awards_won
+FROM Celebrities
+JOIN profession
+ON Celebrities.id=profession.id
+JOIN awards
+ON awards.id=profession.id
