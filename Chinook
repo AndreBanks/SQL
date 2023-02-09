@@ -1,0 +1,32 @@
+I listed the customers that were in the United Kingdom
+
+SELECT FirstName, LastName, Country
+FROM chinook.customers
+WHERE Country = 'United Kingdom'
+GROUP BY CustomerId;
+
+Determined the invioices for those that lived in the UK
+
+SELECT invoices.InvoiceId, customers.FirstName, customers.LastName, invoices.BillingCountry, invoices.InvoiceDate
+FROM chinook.customers as customers
+JOIN chinook.invoices as invoices
+ON chinook.customers.CustomerId=chinook.invoices.CustomerId
+WHERE BillingCountry = 'United Kingdom'
+GROUP BY InvoiceId;
+
+Determined the total number of invoices from 2010
+
+SELECT SUM(InvoiceId) AS 'Total Invoices'
+FROM chinook.invoices
+WHERE InvoiceDate LIKE '%2010%';
+
+wanted to show the name of each track, the media type, the title of the album and which genre each belonged to
+
+SELECT Type.Name, Tracks.Name, Albums.Title, genres.Name
+FROM chinook.media_types as Type
+JOIN chinook.tracks as Tracks
+ON Type.MediaTypeId=Tracks.MediaTypeId
+JOIN chinook.albums as Albums
+ON Tracks.AlbumId=Albums.AlbumId
+JOIN chinook.genres as genres
+ON Tracks.GenreId=genres.GenreId;
